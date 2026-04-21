@@ -1183,6 +1183,36 @@
     }
 
     /* ============================================================
+       PHOTO FRAME IMAGES
+    ============================================================ */
+    .paint-canvas.photo-frame {
+      position: relative;
+      overflow: hidden;
+      background: #0a0702;
+    }
+    .photo-frame-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: sepia(0.18) contrast(1.08) brightness(0.95) saturate(1.1);
+      transition: transform 0.7s ease;
+    }
+    .paint-wrap:hover .photo-frame-img {
+      transform: scale(1.04);
+    }
+    /* Theme-specific photo filter overrides */
+    [data-theme="sketchbook"] .photo-frame-img {
+      filter: grayscale(0.55) contrast(1.2) sepia(0.25) brightness(0.92);
+    }
+    [data-theme="royal"] .photo-frame-img {
+      filter: sepia(0.3) hue-rotate(-15deg) saturate(1.5) contrast(1.1) brightness(1.0);
+    }
+    [data-theme="futuristic"] .photo-frame-img {
+      filter: hue-rotate(155deg) saturate(2.2) brightness(0.68) contrast(1.2);
+    }
+
+    /* ============================================================
        RESPONSIVE — paintings
     ============================================================ */
     @media (max-width: 1100px) {
@@ -1301,26 +1331,32 @@
   </div>
 
   <!-- ═══ HANGING PAINTINGS ═══ -->
-  <!-- Left: Rembrandt-style scholar portrait -->
+  <!-- Left: Da Vinci — The Universal Mind -->
   <div class="paint-wrap hero-paint-left">
     <div class="paint-border">
-      <div class="paint-canvas p-scholar"></div>
+      <div class="paint-canvas photo-frame">
+        <img class="photo-frame-img" src="images/img-davinci.jpg" alt="Leonardo da Vinci — The Universal Mind" loading="lazy">
+      </div>
     </div>
-    <div class="paint-nameplate">The Scholar · c. 1642</div>
+    <div class="paint-nameplate">Leonardo da Vinci · The Universal Mind</div>
   </div>
-  <!-- Right top: Claude Lorrain landscape -->
+  <!-- Right top: School of Athens -->
   <div class="paint-wrap hero-paint-rt">
     <div class="paint-border">
-      <div class="paint-canvas p-landscape"></div>
+      <div class="paint-canvas photo-frame">
+        <img class="photo-frame-img" src="images/img-athens.jpg" alt="The School of Athens — Raphael" loading="lazy" style="object-position:center 20%">
+      </div>
     </div>
-    <div class="paint-nameplate">The Golden Valley · c. 1648</div>
+    <div class="paint-nameplate">The School of Athens · c. 1511</div>
   </div>
-  <!-- Right bottom: Piranesi architecture -->
+  <!-- Right bottom: Warriors —  -->
   <div class="paint-wrap hero-paint-rb">
     <div class="paint-border">
-      <div class="paint-canvas p-temple"></div>
+      <div class="paint-canvas photo-frame">
+        <img class="photo-frame-img" src="images/img-warriors.jpg" alt="The Conquerors — Warriors of History" loading="lazy">
+      </div>
     </div>
-    <div class="paint-nameplate">The Portico · c. 1750</div>
+    <div class="paint-nameplate">The Conquerors · Eternal Warriors</div>
   </div>
 
   <div class="hero-content">
@@ -1353,19 +1389,23 @@
   <div class="sec-bg-art">
     <div class="paint-canvas p-landscape"></div>
   </div>
-  <!-- Framed portrait panel on the right edge -->
+  <!-- Framed photo panel on the right edge — School of Athens -->
   <div class="paint-wrap sec-side-paint sec-side-paint-r">
     <div class="paint-border">
-      <div class="paint-canvas p-scholar"></div>
+      <div class="paint-canvas photo-frame">
+        <img class="photo-frame-img" src="images/img-athens.jpg" alt="The School of Athens" loading="lazy" style="object-position:center 25%">
+      </div>
     </div>
-    <div class="paint-nameplate">Portrait Study</div>
+    <div class="paint-nameplate">The School of Athens</div>
   </div>
-  <!-- Framed temple panel on the left edge -->
+  <!-- Framed photo panel on the left edge — Da Vinci -->
   <div class="paint-wrap sec-side-paint sec-side-paint-l">
     <div class="paint-border">
-      <div class="paint-canvas p-temple"></div>
+      <div class="paint-canvas photo-frame">
+        <img class="photo-frame-img" src="images/img-davinci.jpg" alt="Leonardo da Vinci" loading="lazy">
+      </div>
     </div>
-    <div class="paint-nameplate">The Portico</div>
+    <div class="paint-nameplate">The Universal Mind</div>
   </div>
   <div class="about-inner">
 
@@ -1481,6 +1521,15 @@
   <!-- Temple architecture painting as gallery-wall ambience -->
   <div class="sec-bg-art">
     <div class="paint-canvas p-temple" style="opacity:0.09;filter:blur(2px)"></div>
+  </div>
+  <!-- Scientists photo frame — left side -->
+  <div class="paint-wrap sec-side-paint sec-side-paint-l">
+    <div class="paint-border">
+      <div class="paint-canvas photo-frame">
+        <img class="photo-frame-img" src="images/img-scientists.jpg" alt="Great Minds of Science" loading="lazy">
+      </div>
+    </div>
+    <div class="paint-nameplate">The Great Minds · Eternal Giants</div>
   </div>
   <div class="skills-header">
     <span class="section-label reveal">The Arsenal</span>
@@ -1688,6 +1737,15 @@
   <div class="sec-bg-art">
     <div class="paint-canvas p-map"></div>
   </div>
+  <!-- Warriors photo frame — right side -->
+  <div class="paint-wrap sec-side-paint sec-side-paint-r">
+    <div class="paint-border">
+      <div class="paint-canvas photo-frame">
+        <img class="photo-frame-img" src="images/img-warriors.jpg" alt="The Conquerors" loading="lazy">
+      </div>
+    </div>
+    <div class="paint-nameplate">The Conquerors · Path of Glory</div>
+  </div>
   <!-- Large compass rose watermark bottom-right -->
   <svg class="compass-bg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="100" cy="100" r="92" stroke="currentColor" stroke-width="0.7"/>
@@ -1871,18 +1929,22 @@
   <div class="sec-bg-art" style="opacity:1">
     <div class="paint-canvas p-celestial" style="opacity:0.22;filter:blur(2px)"></div>
   </div>
-  <!-- Flanking framed celestial paintings -->
-  <div class="paint-wrap sec-side-paint sec-side-paint-l" style="opacity:0.32">
+  <!-- Flanking framed paintings in Vision section -->
+  <div class="paint-wrap sec-side-paint sec-side-paint-l" style="opacity:0.42">
     <div class="paint-border">
-      <div class="paint-canvas p-celestial"></div>
+      <div class="paint-canvas photo-frame">
+        <img class="photo-frame-img" src="images/img-scientists.jpg" alt="The Great Minds" loading="lazy">
+      </div>
     </div>
-    <div class="paint-nameplate">The Empyrean · c. 1512</div>
+    <div class="paint-nameplate">The Great Minds · Legacy</div>
   </div>
-  <div class="paint-wrap sec-side-paint sec-side-paint-r" style="opacity:0.32">
+  <div class="paint-wrap sec-side-paint sec-side-paint-r" style="opacity:0.42">
     <div class="paint-border">
-      <div class="paint-canvas p-landscape"></div>
+      <div class="paint-canvas photo-frame">
+        <img class="photo-frame-img" src="images/img-alexander.jpg" alt="Alexander the Great" loading="lazy">
+      </div>
     </div>
-    <div class="paint-nameplate">Beyond the Horizon</div>
+    <div class="paint-nameplate">Alexander · The Visionary King</div>
   </div>
   <div class="vision-inner">
     <span class="section-label reveal">The Horizon</span>
@@ -1924,19 +1986,23 @@
   <div class="sec-bg-art">
     <div class="paint-canvas p-scholar" style="opacity:0.08;filter:blur(3px)"></div>
   </div>
-  <!-- Left cameo — portrait -->
+  <!-- Left cameo — Da Vinci -->
   <div class="paint-wrap contact-cameo-l">
     <div class="paint-border">
-      <div class="paint-canvas p-scholar"></div>
+      <div class="paint-canvas photo-frame">
+        <img class="photo-frame-img" src="images/img-davinci.jpg" alt="Leonardo da Vinci" loading="lazy">
+      </div>
     </div>
-    <div class="paint-nameplate">The Visionary</div>
+    <div class="paint-nameplate">The Visionary · da Vinci</div>
   </div>
-  <!-- Right cameo — landscape -->
+  <!-- Right cameo — Alexander -->
   <div class="paint-wrap contact-cameo-r">
     <div class="paint-border">
-      <div class="paint-canvas p-landscape"></div>
+      <div class="paint-canvas photo-frame">
+        <img class="photo-frame-img" src="images/img-alexander.jpg" alt="Alexander the Great" loading="lazy">
+      </div>
     </div>
-    <div class="paint-nameplate">The Journey</div>
+    <div class="paint-nameplate">The Conqueror · Alexander</div>
   </div>
   <div class="contact-inner">
     <h2 class="contact-heading reveal">Let Us Create</h2>
